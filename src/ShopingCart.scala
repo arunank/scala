@@ -5,14 +5,11 @@
 class ShoppingCart {
   def calculate(args:String* ) : Int = {
 
-    args.filter(_.equals("Apple")).length * 60 + args.filter(_.equals("Orange")).length * 25
+    var appleCount = args.filter(_.equals("Apple")).length
+    var orangeCount = args.filter(_.equals("Orange")).length
 
-    //Alternate approach
-    /**
-    var sum = 0
-		 args.foreach( i => if( i.equals("Apple") ) sum += 60 else if( i.equals("Orange") ) sum += 25 )
-		 sum
-      **/
+    //2 Apples at cost of 1 and 3 Oranges at cost of 2 and remaining at usual price per item.
+    ((appleCount / 2 ) + (appleCount % 2 )) * 60  + ((orangeCount / 3 ) * 2 + (orangeCount % 3 )) * 25
   }
 }
 
